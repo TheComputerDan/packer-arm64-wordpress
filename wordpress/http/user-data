@@ -1,0 +1,63 @@
+#cloud-config
+autoinstall:
+  apt:
+    preserve_sources_list: false
+    mirror-selection:
+        primary:
+            - country-mirror
+            - arches: [i386, amd64]
+              uri: "http://archive.ubuntu.com/ubuntu"
+            - arches: [s390x, arm64, armhf, powerpc, ppc64el, riscv64]
+              uri: "http://ports.ubuntu.com/ubuntu-ports"
+    fallback: abort
+    geoip: true
+  codecs:
+    install: false
+  drivers:
+    install: false
+  identity:
+    hostname: wordpress
+    password: $6$n5MCNNtlUysxSAvQ$Ux/8Es6OmjmsbuBHcSNqr2Nip7nIGPAdKudof9F5PjVC8ZJ5b0iH/ofhjSF/fWVE2R6.h4lalTLRwQ7gnMIkK/
+    realname: vagrant
+    username: vagrant
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: us
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  network:
+    version: 2
+    # renderer: networkd
+    ethernets:
+      ens160:
+        dhcp4: true
+        optional: true
+  source:
+    id: ubuntu-server
+    search_drivers: false
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+  storage:
+    layout:
+      name: lvm
+  updates: security
+  packages:
+    - openssh-server
+    - open-vm-tools
+    - cloud-init
+    - mysql-server
+    - wordpress
+  user-data:
+    disable_root: false
+    timezone: "UTC"
+  late-commands:
+    - sed -i -e 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config
+    - echo 'vagrant ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/vagrant
+    - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/vagrant
+
+
+  version: 1

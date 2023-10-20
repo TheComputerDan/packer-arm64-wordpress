@@ -1,0 +1,45 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "packer@latest": {
+      "last_modified": "2023-09-27T18:02:17Z",
+      "resolved": "github:NixOS/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9#packer",
+      "source": "devbox-search",
+      "version": "1.9.4",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/lsdai9pn2si6hpvydrwj2kppa045ggj4-packer-1.9.4"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/zmyd3ikp08xd4f5mbgrl8msb4bp5f2l4-packer-1.9.4"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/s386n2k929pypvi1fqkml1nx4mkp1j5s-packer-1.9.4"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/h8ay5lfgmmw1i8fvvd2ydbzq68rpw26m-packer-1.9.4"
+        }
+      }
+    },
+    "vagrant@latest": {
+      "last_modified": "2023-09-27T18:02:17Z",
+      "resolved": "github:NixOS/nixpkgs/517501bcf14ae6ec47efd6a17dda0ca8e6d866f9#vagrant",
+      "source": "devbox-search",
+      "version": "2.3.4",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/xfn6v96jvpwipp99l4mqmmskqlfiip6d-vagrant-2.3.4"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/jpvvgr5z28z5a9qb17lxwx4zhcx9xlqf-vagrant-2.3.4"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/fxld15c6fxyj8g0fn5vms2072xi0nds8-vagrant-2.3.4"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/hskfcms5rwlxrxpd8mqfikv9gh0z73bv-vagrant-2.3.4"
+        }
+      }
+    }
+  }
+}
