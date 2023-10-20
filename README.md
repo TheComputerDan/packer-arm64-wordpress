@@ -1,5 +1,7 @@
 # WordPress Vagrant Box Pipeline for ARM
 
+[Published Vagrant Box](https://app.vagrantup.com/DoctorDan/boxes/Wordpress/versions/0.1.0)
+
 ## Prerequisites
 
 - MacOS (arm)
