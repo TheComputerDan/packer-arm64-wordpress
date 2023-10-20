@@ -2,3 +2,10 @@
 .vagrant/**
 .idea/**
 *.iso
+*.box
+*.vmxf
+*.vmdk
+*.nvram
+*.vmx
+*.vmsd
+output-wordpress/**

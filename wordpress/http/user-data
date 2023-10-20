@@ -17,7 +17,7 @@ autoinstall:
     install: false
   identity:
     hostname: wordpress
-    password: $6$n5MCNNtlUysxSAvQ$Ux/8Es6OmjmsbuBHcSNqr2Nip7nIGPAdKudof9F5PjVC8ZJ5b0iH/ofhjSF/fWVE2R6.h4lalTLRwQ7gnMIkK/
+    password: $6$n5MCNNtlUysxSAvQ$Ux/8Es6OmjmsbuBHcSNqr2Nip7nIGPAdKudof9F5PjVC8ZJ5b0iH/ofhjSF/fWVE2R6.h4lalTLRwQ7gnMIkK/ # vagrant
     realname: vagrant
     username: vagrant
   kernel:
@@ -29,11 +29,9 @@ autoinstall:
   locale: en_US.UTF-8
   network:
     version: 2
-    # renderer: networkd
     ethernets:
       ens160:
         dhcp4: true
-        optional: true
   source:
     id: ubuntu-server
     search_drivers: false
@@ -58,6 +56,4 @@ autoinstall:
     - sed -i -e 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config
     - echo 'vagrant ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/vagrant
     - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/vagrant
-
-
   version: 1

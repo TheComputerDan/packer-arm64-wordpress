@@ -4,6 +4,10 @@ packer {
       version = "~> 1"
       source  = "github.com/hashicorp/vmware"
     }
+    vagrant = {
+      source  = "github.com/hashicorp/vagrant"
+      version = "~> 1"
+    }
   }
 }
 
@@ -109,7 +113,7 @@ source "vmware-iso" "wordpress" {
   
   vmx_data_post = {
     "bios.bootDelay"         = "0000"
-  // //   # remove optical drives
+    // remove optical drives
     "sata0:0.autodetect"     = "TRUE"
     "sata0:0.deviceType"     = "cdrom-raw"
     "sata0:0.fileName"       = "auto detect"
@@ -140,10 +144,20 @@ build {
       "sudo cp /tmp/wordpress.conf /etc/apache2/sites-available/wordpress.conf",
       "sudo cp /tmp/wp-config.php /etc/wordpress/wp-config.php",
       "sudo cp /tmp/wp-config.php /etc/wordpress/config-default.php",
+      "sudo a2dissite 000-default.conf",
       "sudo a2ensite wordpress",
       "sudo systemctl reload apache2.service",
-      "cat /tmp/wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf"
+      "cat /tmp/wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf",
+      "sudo mkdir -p /usr/share/wordpress/wp-content/uploads",
+      "sudo chmod -R 755 /usr/share/wordpress/wp-content",
+      "sudo chown -R www-data:www-data /usr/share/wordpress"
     ]
+  }
+
+  post-processors {
+    post-processor "vagrant" {
+      keep_input_artifact = true
+    }
   }
 }
 
